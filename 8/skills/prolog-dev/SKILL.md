@@ -39,10 +39,10 @@ Record P2 prompts in `8/prompts/P2.md`. Run the executable checks with `swipl -q
 
 ## Run from the repository root
 
-Use the course runner once the template and requested predicates are in place. For direct queries, pass the goal with `-g` and terminate through the runner's `-t halt`. Keep `halt/0` calls and `initialization(main, main)` out of the source. In these diagnostic commands, `writeln/1` belongs to the test goal.
+Use the course runner once the template and requested predicates are in place. For direct queries, pass the goal with `-g` and terminate through the runner's `-t halt`. Keep `halt/0` calls and all `initialization` directives out of the source. In these diagnostic commands, `writeln/1` belongs to the test goal.
 
 ```sh
-swipl -q -f 8/code/8_q1.pl
+swipl -q -f 8/code/8_q1.pl -g main -t halt
 swipl -q -f 8/code/8_q1.pl -g "count_solutions([], N), writeln(N)" -t halt
 swipl -q -f 8/code/8_q1.pl -g "count_solutions([1,2,3,4,5,6,7,8,9], 1)" -t halt
 swipl -q -f 8/code/8_q2.pl -g "all_equations([4,2,5,3], Es), writeln(Es)" -t halt

@@ -14,7 +14,7 @@ Logic and functional programming coursework for Principles of Programming Langua
 Use SWI-Prolog 9.x and Racket 8.x. The commands apply once the source templates are implemented.
 
 ```bash
-swipl -q -f 8/code/8_q1.pl
+swipl -q -f 8/code/8_q1.pl -g main -t halt
 swipl -q -f 8/code/8_q1.pl -g 'count_solutions([1,2,3,4,5,6,7,8], N), writeln(N)' -t halt
 swipl -q -f 8/code/8_q2.pl -g 'all_equations([2,4,8], Es), writeln(Es)' -t halt
 racket 8/code/8_q3.rkt
