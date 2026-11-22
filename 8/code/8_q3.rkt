@@ -15,3 +15,7 @@
       '()
       (my-append (inorder (cadr tree))
                  (cons (car tree) (inorder (caddr tree))))))
+
+(define (print-inorder tree)
+  (display (inorder tree))
+  (newline))
