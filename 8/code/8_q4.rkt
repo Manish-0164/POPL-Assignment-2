@@ -32,3 +32,7 @@
                     (cons x elements)
                     elements)))])
     insert))
+
+;; Insert x at each level whose original length is strictly below n.
+(define (insert-if-short x lst n)
+  ((make-inserter x (lambda (len) (< len n))) lst))
