@@ -16,3 +16,46 @@ p1_candidate([
                 [AlexLang, BenLang, CarlaLang, DanaLang]),
     permutation(['AI', web, embedded, data],
                 [AlexProject, BenProject, CarlaProject, DanaProject]).
+
+% clue(?Number, +Candidate) holds when a complete candidate satisfies the clue.
+clue(1, Candidate) :-
+    ground(Candidate),
+    member(p(Name, Dept, _, 'AI'), Candidate),
+    Dept \= research,
+    Name \= 'Dana'.
+
+clue(2, Candidate) :-
+    ground(Candidate),
+    member(p('Alex', Dept, Lang, _), Candidate),
+    Dept \= development,
+    Lang \= 'c++'.
+
+clue(3, Candidate) :-
+    ground(Candidate),
+    member(p(_, testing, python, _), Candidate).
+
+clue(4, Candidate) :-
+    ground(Candidate),
+    member(p('Ben', Dept, _, web), Candidate),
+    Dept \= testing.
+
+clue(5, Candidate) :-
+    ground(Candidate),
+    member(p(_, design, java, _), Candidate).
+
+clue(6, Candidate) :-
+    ground(Candidate),
+    member(p('Carla', Dept, _, Project), Candidate),
+    Project \= embedded,
+    Dept \= development.
+
+clue(7, Candidate) :-
+    ground(Candidate),
+    member(p('Dana', Dept, Lang, _), Candidate),
+    Lang \= java,
+    memberchk(Dept, [research, testing]).
+
+clue(8, Candidate) :-
+    ground(Candidate),
+    member(p(_, research, Lang, data), Candidate),
+    Lang \= javascript.
