@@ -19,3 +19,10 @@
 (define (print-inorder tree)
   (display (inorder tree))
   (newline))
+
+;; Return the root, left subtree, and right subtree values in order.
+(define (preorder tree)
+  (if (null? tree)
+      '()
+      (cons (car tree)
+            (my-append (preorder (cadr tree)) (preorder (caddr tree))))))
