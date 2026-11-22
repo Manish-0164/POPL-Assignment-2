@@ -65,6 +65,10 @@ p1_solution(Active, Solution) :-
     p1_candidate(Solution),
     forall(member(Number, Active), clue(Number, Solution)).
 
+% count_solutions(+Active, ?N) holds when N is the number of matching assignments.
+count_solutions(Active, N) :-
+    aggregate_all(count, p1_solution(Active, _), N).
+
 % main/0 prints one assignment satisfying clues 1 through 8.
 main :-
     once(p1_solution([1, 2, 3, 4, 5, 6, 7, 8], Solution)),
