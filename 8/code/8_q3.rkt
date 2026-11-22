@@ -54,3 +54,7 @@
             [right-height (car right)])
        (list (+ 1 (if (> left-height right-height) left-height right-height))
              (+ (cadr left) (cadr right))))]))
+
+(define (print-height-and-leaves tree)
+  (display (tree-stats tree))
+  (newline))
