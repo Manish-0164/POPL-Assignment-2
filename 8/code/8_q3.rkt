@@ -8,3 +8,10 @@
   (if (null? first)
       second
       (cons (car first) (my-append (cdr first) second))))
+
+;; Return the left subtree, root, and right subtree values in order.
+(define (inorder tree)
+  (if (null? tree)
+      '()
+      (my-append (inorder (cadr tree))
+                 (cons (car tree) (inorder (caddr tree))))))
