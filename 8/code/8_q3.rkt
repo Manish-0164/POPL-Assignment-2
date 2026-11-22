@@ -34,3 +34,10 @@
       (let* ([left (postorder (cadr tree))]
              [right (postorder (caddr tree))])
         (my-append left (my-append right (list (car tree)))))))
+
+(define (print-all-traversals tree)
+  (print-inorder tree)
+  (display (preorder tree))
+  (newline)
+  (display (postorder tree))
+  (newline))
