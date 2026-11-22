@@ -45,3 +45,14 @@ op_precedence('+', 1).
 op_precedence('-', 1).
 op_precedence('*', 2).
 op_precedence('/', 2).
+
+% needs_parens(+Child, +ParentOp, +Side) holds when a child needs parentheses.
+% A number leaf never qualifies. Equal precedence needs them on the right.
+needs_parens(node(ChildOp, _, _), ParentOp, Side) :-
+    op_precedence(ChildOp, ChildPrecedence),
+    op_precedence(ParentOp, ParentPrecedence),
+    (   Side = left,
+        ChildPrecedence < ParentPrecedence
+    ;   Side = right,
+        ChildPrecedence =< ParentPrecedence
+    ).
