@@ -7,3 +7,12 @@
 split_equation([First, Second | Rest], [First], [Second | Rest]).
 split_equation([First | Rest], [First | Left], Right) :-
     split_equation(Rest, Left, Right).
+
+% expr_tree(+Numbers, -Tree) builds each binary expression over Numbers
+% in order. A contiguous split selects the inputs for its two subtrees.
+expr_tree([Number], num(Number)).
+expr_tree(Numbers, node(Op, Left, Right)) :-
+    split_equation(Numbers, LeftNumbers, RightNumbers),
+    expr_tree(LeftNumbers, Left),
+    expr_tree(RightNumbers, Right),
+    member(Op, ['+', '-', '*', '/']).
