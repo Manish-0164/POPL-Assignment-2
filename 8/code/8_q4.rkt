@@ -36,3 +36,11 @@
 ;; Insert x at each level whose original length is strictly below n.
 (define (insert-if-short x lst n)
   ((make-inserter x (lambda (len) (< len n))) lst))
+
+;; Read x, lst, and n from stdin and print exactly one result line.
+(define (print-insert-result)
+  (let* ([x (read)]
+         [lst (read)]
+         [n (read)])
+    (display (insert-if-short x lst n))
+    (newline)))
