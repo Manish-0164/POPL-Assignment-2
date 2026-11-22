@@ -72,3 +72,16 @@ expr_to_string(node(Op, Left, Right), String) :-
     ;   RightOperand = RightString
     ),
     atomics_to_string([LeftOperand, Op, RightOperand], String).
+
+% generate_equation(+Numbers, -Equation) renders each split and pair of
+% expression trees that evaluate to the same integer.
+generate_equation(Numbers, Equation) :-
+    split_equation(Numbers, LeftNumbers, RightNumbers),
+    expr_tree(LeftNumbers, LeftTree),
+    eval_expr(LeftTree, LeftValue),
+    expr_tree(RightNumbers, RightTree),
+    eval_expr(RightTree, RightValue),
+    LeftValue =:= RightValue,
+    expr_to_string(LeftTree, LeftString),
+    expr_to_string(RightTree, RightString),
+    atomics_to_string([LeftString, "=", RightString], Equation).
