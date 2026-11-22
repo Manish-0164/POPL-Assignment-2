@@ -41,3 +41,16 @@
   (newline)
   (display (postorder tree))
   (newline))
+
+;; Return (height leaf-count) after computing each child result once.
+(define (tree-stats tree)
+  (cond
+    [(null? tree) (list 0 0)]
+    [(and (null? (cadr tree)) (null? (caddr tree))) (list 1 1)]
+    [else
+     (let* ([left (tree-stats (cadr tree))]
+            [right (tree-stats (caddr tree))]
+            [left-height (car left)]
+            [right-height (car right)])
+       (list (+ 1 (if (> left-height right-height) left-height right-height))
+             (+ (cadr left) (cadr right))))]))
