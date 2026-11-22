@@ -16,3 +16,25 @@ expr_tree(Numbers, node(Op, Left, Right)) :-
     expr_tree(LeftNumbers, Left),
     expr_tree(RightNumbers, Right),
     member(Op, ['+', '-', '*', '/']).
+
+% eval_expr(+Tree, -Value) computes the integer value of the tree.
+% A division fails if its evaluated divisor is zero or leaves a remainder.
+eval_expr(num(Number), Number).
+eval_expr(node('+', Left, Right), Value) :-
+    eval_expr(Left, LeftValue),
+    eval_expr(Right, RightValue),
+    Value is LeftValue + RightValue.
+eval_expr(node('-', Left, Right), Value) :-
+    eval_expr(Left, LeftValue),
+    eval_expr(Right, RightValue),
+    Value is LeftValue - RightValue.
+eval_expr(node('*', Left, Right), Value) :-
+    eval_expr(Left, LeftValue),
+    eval_expr(Right, RightValue),
+    Value is LeftValue * RightValue.
+eval_expr(node('/', Left, Right), Value) :-
+    eval_expr(Left, LeftValue),
+    eval_expr(Right, RightValue),
+    RightValue =\= 0,
+    0 =:= LeftValue rem RightValue,
+    Value is LeftValue // RightValue.
