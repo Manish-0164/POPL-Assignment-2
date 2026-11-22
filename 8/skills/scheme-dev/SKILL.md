@@ -9,7 +9,7 @@ Start with the relevant problem in the handout, then read the source and test no
 
 ## How we work
 
-- Keep each AI prompt to one function, one test file, or one review. For example, review whether `my-map` preserves order on a long list. Save the actual wording in `8/skills/prompts/S1.md` or `S2.md` and keep each change small enough to explain in the viva.
+- Keep each AI prompt to one function, one test file, or one review. For example, review whether `my-map` preserves order on a long list. Save the actual wording in `8/prompts/S1.md` or `S2.md` and keep each change small enough to explain in the viva.
 - Use Racket 8.x with `#lang racket/base`. Follow the template and preserve the public function names and argument order. Use kebab-case, descriptive parameters, and a short comment for each function's inputs and result. For a recursive helper, say what shrinks, what the base case returns, and what any accumulator represents.
 - Prefer ordinary structural recursion for trees and tail recursion where natural, especially for long flat lists. Pass state through arguments. Keep output in the required wrappers and compare the final newline along with the values.
 
