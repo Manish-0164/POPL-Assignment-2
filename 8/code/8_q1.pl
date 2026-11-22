@@ -79,3 +79,16 @@ main :-
     once(p1_solution([1, 2, 3, 4, 5, 6, 7, 8], Solution)),
     forall(member(p(Name, Dept, Lang, Project), Solution),
            format('~a = [~a, ~a, ~a]~n', [Name, Dept, Lang, Project])).
+
+% Run the default entry point when this file is selected by -f and no goal is supplied.
+p1_startup(Source) :-
+    current_prolog_flag(os_argv, Arguments),
+    (   append(_, ['-f', InitFile | _], Arguments),
+        same_file(InitFile, Source),
+        \+ memberchk('-g', Arguments)
+    ->  main
+    ;   true
+    ).
+
+:- prolog_load_context(file, Source),
+   initialization(p1_startup(Source), program).
