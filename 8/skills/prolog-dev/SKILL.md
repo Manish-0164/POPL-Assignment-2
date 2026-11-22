@@ -9,7 +9,7 @@ Start with the relevant problem in the handout, then read the source and its tes
 
 ## How we work
 
-- Keep each AI prompt to one predicate, one test file, or one review. For example, ask for a review of the division case in P2. Save the actual wording in `8/skills/prompts/P1.md` or `P2.md` and keep each code change small enough to explain in the viva.
+- Keep each AI prompt to one predicate, one test file, or one review. For example, ask for a review of the division case in P2. Save the actual wording in the problem's prompt log under `8/prompts/` and keep each code change small enough to explain in the viva.
 - Use SWI-Prolog 9.x, `snake_case` for predicates, and descriptive variables such as `Active`, `Solution`, and `RightValue`. Give each predicate a short comment saying when it holds and which arguments the caller supplies. Comment a cut or an ordering dependency if it matters to correctness.
 - Preserve the public names, arities, and course template. Write the solution below the template line. Use only `lists`, `apply`, `yall`, and `aggregate` when a library is needed. Avoid `assert`, `retract`, `b_setval`, and `nb_setval`.
 - Use `=` for unification, `is` to evaluate bound arithmetic, and `=:=` to compare numeric values. Apply tests for inequality or negation after their relevant arguments are bound. Read each clause as a relation, then trace the goal order Prolog will actually use.
@@ -27,6 +27,8 @@ Work in `8/code/8_q1.pl` and use `8/tests/P1.md`. Treat a candidate as four `p(N
 ## P2 · Form a Valid Arithmetic Equation
 
 Work in `8/code/8_q2.pl` and use `8/tests/P2.md`. Keep the expression structure, integer value, and printed form distinct.
+
+Record P2 prompts in `8/prompts/P2.md`. Run the executable checks with `swipl -q -s 8/tests/p2_tests.pl -g run_tests -t halt`. The test harness may use `plunit`; the solution file must still follow the allowed-library constraints below.
 
 - Split the input into two nonempty contiguous parts. Build binary expressions from each part, using every number once in order. Use exactly one equality between the sides. Leaves are the given nonnegative integers. Intermediate values can be negative. Check each division for a nonzero divisor and zero remainder before taking the integer quotient.
 - Render the tree directly as a space-free SWI-Prolog string. Give `*` and `/` higher precedence than `+` and `-`. Parenthesize an operator on the left only at lower precedence. On the right, parenthesize at equal or lower precedence, even for addition or multiplication. Leave number leaves bare. For example, both `1+(2+3)=6` and `1+2+3=6` must survive for `[1,2,3,6]`.

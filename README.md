@@ -25,7 +25,7 @@ printf '%s\n' '42 ((1 2) (3 4 5) (6) ()) 3' | racket 8/code/8_q4.rkt
 
 - [Tests](8/tests) contains one test specification per problem, with handout examples and edge cases to turn into executable checks during implementation.
 - [Prolog skill](8/skills/prolog-dev/SKILL.md) and [Scheme skill](8/skills/scheme-dev/SKILL.md) record language conventions, test commands, and review criteria.
-- [Prompt logs](8/skills/prompts) hold verbatim AI prompts, one file per problem. Use one predicate, function, test file, or review per prompt and keep the work visible in incremental commits.
+- [Prompt logs](8/prompts) hold verbatim AI prompts, one file per problem. Use one predicate, function, test file, or review per prompt and keep the work visible in incremental commits.
 - [P1 report](8/P1_REPORT.md) records the measured count with clues 1–8 and what it implies.
 
 The source files are scaffolds. Retain any instructor-supplied template lines and test calls when adding implementations. Submit this GitHub repository with its commit history and keep collaboration within Group 8.
