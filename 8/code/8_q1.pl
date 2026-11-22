@@ -64,3 +64,9 @@ clue(8, Candidate) :-
 p1_solution(Active, Solution) :-
     p1_candidate(Solution),
     forall(member(Number, Active), clue(Number, Solution)).
+
+% main/0 prints one assignment satisfying clues 1 through 8.
+main :-
+    once(p1_solution([1, 2, 3, 4, 5, 6, 7, 8], Solution)),
+    forall(member(p(Name, Dept, Lang, Project), Solution),
+           format('~a = [~a, ~a, ~a]~n', [Name, Dept, Lang, Project])).
