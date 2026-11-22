@@ -59,3 +59,8 @@ clue(8, Candidate) :-
     ground(Candidate),
     member(p(_, research, Lang, data), Candidate),
     Lang \= javascript.
+
+% p1_solution(+Active, ?Solution) holds when Solution satisfies every listed clue.
+p1_solution(Active, Solution) :-
+    p1_candidate(Solution),
+    forall(member(Number, Active), clue(Number, Solution)).
