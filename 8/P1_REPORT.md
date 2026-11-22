@@ -1,6 +1,5 @@
 # P1 Report — Group 8
 
-Run `count_solutions([1,2,3,4,5,6,7,8], N)` after implementing P1.
+Running `count_solutions([1,2,3,4,5,6,7,8], N)` in SWI-Prolog 9.2.9 returned `N = 3`.
 
-- **Measured N:** Pending.
-- **Interpretation:** State whether clues 1–8 admit zero, one, or multiple assignments and what that says about uniqueness.
+Three distinct assignments satisfy the original clues, so the puzzle has no unique solution with clues 1–8 alone.
