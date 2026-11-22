@@ -85,3 +85,9 @@ generate_equation(Numbers, Equation) :-
     expr_to_string(LeftTree, LeftString),
     expr_to_string(RightTree, RightString),
     atomics_to_string([LeftString, "=", RightString], Equation).
+
+% all_equations(+Numbers, -Equations) returns the sorted, unique equations.
+% With no solutions, findall/3 collects an empty list.
+all_equations(Numbers, Equations) :-
+    findall(Equation, generate_equation(Numbers, Equation), Generated),
+    sort(Generated, Equations).
