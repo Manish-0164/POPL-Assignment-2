@@ -60,6 +60,11 @@ clue(8, Candidate) :-
     member(p(_, research, Lang, data), Candidate),
     Lang \= javascript.
 
+% CLUE 9: The friend in the testing department prefers the AI project.
+clue(9, Solution) :-
+    ground(Solution),
+    member(p(_, testing, _, 'AI'), Solution).
+
 % p1_solution(+Active, ?Solution) holds when Solution satisfies every listed clue.
 p1_solution(Active, Solution) :-
     p1_candidate(Solution),
