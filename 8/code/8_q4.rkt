@@ -9,3 +9,10 @@
     (if (null? remaining)
         total
         (count (cdr remaining) (+ total 1)))))
+
+;; Apply transform to each immediate element in order.
+(define (my-map transform lst)
+  (if (null? lst)
+      '()
+      (cons (transform (car lst))
+            (my-map transform (cdr lst)))))
