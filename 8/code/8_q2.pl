@@ -38,3 +38,10 @@ eval_expr(node('/', Left, Right), Value) :-
     RightValue =\= 0,
     0 =:= LeftValue rem RightValue,
     Value is LeftValue // RightValue.
+
+% op_precedence(+Op, -Precedence) gives the binding strength of Op.
+% A higher number binds more tightly.
+op_precedence('+', 1).
+op_precedence('-', 1).
+op_precedence('*', 2).
+op_precedence('/', 2).
