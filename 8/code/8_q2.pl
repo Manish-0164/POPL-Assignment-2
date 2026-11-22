@@ -56,3 +56,19 @@ needs_parens(node(ChildOp, _, _), ParentOp, Side) :-
     ;   Side = right,
         ChildPrecedence =< ParentPrecedence
     ).
+
+% expr_to_string(+Tree, -String) renders a tree in P2's canonical form.
+expr_to_string(num(Number), String) :-
+    number_string(Number, String).
+expr_to_string(node(Op, Left, Right), String) :-
+    expr_to_string(Left, LeftString),
+    expr_to_string(Right, RightString),
+    (   needs_parens(Left, Op, left)
+    ->  atomics_to_string(["(", LeftString, ")"], LeftOperand)
+    ;   LeftOperand = LeftString
+    ),
+    (   needs_parens(Right, Op, right)
+    ->  atomics_to_string(["(", RightString, ")"], RightOperand)
+    ;   RightOperand = RightString
+    ),
+    atomics_to_string([LeftOperand, Op, RightOperand], String).
