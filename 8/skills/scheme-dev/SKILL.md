@@ -26,6 +26,7 @@ Work in `8/code/8_q3.rkt` and use `8/tests/S1.md`. Keep the instructor's tree de
 - In `print-inorder`, print one list in left–node–right order. In `print-all-traversals`, print inorder, preorder, and postorder on three lines. Preorder is node–left–right and postorder is left–right–node. Trace a tree with only a right child as well as a balanced tree.
 - In `print-height-and-leaves`, display a two-element list. The empty tree has height 0 and no leaves. A node's height is 1 plus the larger child height. Only a node with two empty children is a leaf. A node with one child has the leaves of that child.
 - Check the handout's balanced numeric tree, right chain, and symbol tree. Also check the empty tree and a single node. The empty tree gives `()` for each traversal and `(0 0)` for the height and leaf count. Use `display` and `newline` for each required output line.
+- Check `'(9 (2 () (9 () ())) (1 () ()))` for inorder `(2 9 9 1)`, preorder `(9 2 9 1)`, postorder `(9 2 1 9)`, and `(3 2)` for height and leaves. This tree combines repeated values and a one-child node. Traversals follow the shape of the tree and preserve every occurrence.
 
 ## S2 · Conditionally Insert into a Nested List
 
@@ -35,6 +36,8 @@ Work in `8/code/8_q4.rkt` and use `8/tests/S2.md`. Every proper list is a candid
 - Have `make-inserter` take `x` and a one-argument length predicate, then return a one-argument function on a list. Base each insertion on the original length at that level. Use `my-length` for the check and `my-map` to visit the original elements. Preserve their order and prepend `x` once to each qualifying list. Use that closure in the single final definition of `insert-if-short` with the strict test `(< len n)`.
 - In `print-insert-result`, read `x`, `lst`, and `n` in that order from stdin. Print the result using `display` and one `newline`. The input consists of three Racket datums and may span lines. Keep prompts and debug messages off stdout.
 - Use the handout's examples, a length exactly equal to `n`, nested empty lists, and the empty top-level list with `n = 0` and with positive `n`. Exercise `make-inserter` with an equality predicate as well as a threshold. Check nesting depth 100 and a flat list with 10,000 elements. Avoid repeatedly taking the length of successive tails or copying growing partial results.
+- Try `x (() (a b) (c)) 2` and expect `((x) (a b) (x c))`. The empty child qualifies. The two-element child is exactly at the cutoff and the outer list has three elements. Feed the same three datums on separate lines and expect the same output.
+- For the returned `make-inserter` function, use an equality predicate on length 1 and apply it to `'(a (()) ())`. With insertion atom `x`, expect `(a (x ()) ())`. On the 10,000-element input, check that the original elements stay in order and that the outer list grows by exactly one when the threshold rises from 10,000 to 10,001. For depth 100, confirm insertion reaches the innermost empty list.
 
 ## Run from the repository root
 

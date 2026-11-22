@@ -22,6 +22,7 @@ Work in `8/code/8_q1.pl` and use `8/tests/P1.md`. Treat a candidate as four `p(N
 - In `count_solutions/2`, read `Active` as the list of clue numbers. Enforce those clues and ignore the rest. Use `findall/3` or `aggregate_all/3` to count assignments. Check that a candidate has only one successful proof through the generator and clue checks. With no active clues, expect 13,824 distinct assignments. Measure the count with clues 1–8 and record the result and its meaning in `8/P1_REPORT.md`.
 - Place the English wording directly above `clue(9, Solution)` on a line beginning `% CLUE 9:`. Refer to people through their attributes. Measure the count with clues 1–9 and confirm exactly one original candidate survives.
 - Derive one solution to clues 1–8 in `main/0`. Print exactly four lines in name order, each in the form `Name = [department, language, project]` with the prescribed case, commas, spaces, and newline. The rows in the handout illustrate layout. Check stdout and the solution's truth conditions separately.
+- Review `clue/2` with complete assignments that flip one condition at a time, especially for clues with two conditions. Run `count_solutions/2` for a single clue, a nonconsecutive subset such as `[2,8]`, and the same subset in a different order. Adding a clue can only keep or reduce the count. When checking `main/0`, validate its rows against clues 1–8 independently of clue 9.
 
 ## P2 · Form a Valid Arithmetic Equation
 
@@ -31,6 +32,8 @@ Work in `8/code/8_q2.pl` and use `8/tests/P2.md`. Keep the expression structure,
 - Render the tree directly as a space-free SWI-Prolog string. Give `*` and `/` higher precedence than `+` and `-`. Parenthesize an operator on the left only at lower precedence. On the right, parenthesize at equal or lower precedence, even for addition or multiplication. Leave number leaves bare. For example, both `1+(2+3)=6` and `1+2+3=6` must survive for `[1,2,3,6]`.
 - Let `generate_equation/2` find a valid equation and fail finitely when none exists, including for empty and singleton input. Use `sort/2` for the duplicate-free list from `all_equations/2`. Return `[]` when no equation exists and have `count_equations/2` count that list. Keep these predicates silent. Evaluate with the expression tree and integer operations. Keep parsing out of the evaluation path.
 - Compare the seven sorted strings for `[4,2,5,3]` with the handout, the single result for `[2,4,8]`, and the no-result case `[2,3,4]`. Include repeated values, zeros, an inexact division, and a negative intermediate result when reviewing the relevant predicates.
+- Check `[0,0]` for exactly `["0=0"]` and `[12,3,4]` for a result containing `"12/3=4"`. For `[1,2,0,0]`, reject `"1/2*0=0"` because the division is inexact even inside a larger expression. For `[1,0,2,0,2]`, accept `"1=(0-2)/(0-2)"` because both intermediate values are negative and the division is exact.
+- Check the APIs together on several short inputs. The result of `generate_equation/2` should appear in `all_equations/2` whenever that list is nonempty. If the list is empty, generation should fail and the count should be zero. In every case, the count should equal the length of the sorted, duplicate-free list.
 
 ## Run from the repository root
 
