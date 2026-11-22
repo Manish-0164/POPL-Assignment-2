@@ -45,11 +45,10 @@ Use the commands when the template and requested functions are in place. Compare
 
 ```powershell
 racket 8/code/8_q3.rkt
-'42 ((1 2) (3 4 5) (6) ()) 3' | racket 8/code/8_q4.rkt
-'7 () 0' | racket 8/code/8_q4.rkt
+raco test 8/tests/S2.rkt
 ```
 
-The second command should print `((42 1 2) (3 4 5) (42 6) (42))`. The last should print `()`.
+The S2 tests load the submission file silently and call `print-insert-result` with the handout inputs.
 
 ## Before handing back a change
 

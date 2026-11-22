@@ -18,7 +18,7 @@ swipl -q -f 8/code/8_q1.pl
 swipl -q -f 8/code/8_q1.pl -g 'count_solutions([1,2,3,4,5,6,7,8], N), writeln(N)' -t halt
 swipl -q -f 8/code/8_q2.pl -g 'all_equations([2,4,8], Es), writeln(Es)' -t halt
 racket 8/code/8_q3.rkt
-printf '%s\n' '42 ((1 2) (3 4 5) (6) ()) 3' | racket 8/code/8_q4.rkt
+raco test 8/tests/S2.rkt
 ```
 
 ## Submission files
