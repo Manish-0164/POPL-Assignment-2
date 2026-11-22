@@ -16,3 +16,19 @@
       '()
       (cons (transform (car lst))
             (my-map transform (cdr lst)))))
+
+;; Capture the atom and length predicate for every level of the traversal.
+(define (make-inserter x len-ok?)
+  (letrec ([insert
+            (lambda (lst)
+              (let* ([insert-here? (len-ok? (my-length lst))]
+                     [elements
+                      (my-map (lambda (element)
+                                (if (or (null? element) (pair? element))
+                                    (insert element)
+                                    element))
+                              lst)])
+                (if insert-here?
+                    (cons x elements)
+                    elements)))])
+    insert))
