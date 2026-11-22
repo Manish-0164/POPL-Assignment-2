@@ -26,3 +26,11 @@
       '()
       (cons (car tree)
             (my-append (preorder (cadr tree)) (preorder (caddr tree))))))
+
+;; Return the left subtree, right subtree, and root values in order.
+(define (postorder tree)
+  (if (null? tree)
+      '()
+      (let* ([left (postorder (cadr tree))]
+             [right (postorder (caddr tree))])
+        (my-append left (my-append right (list (car tree)))))))
