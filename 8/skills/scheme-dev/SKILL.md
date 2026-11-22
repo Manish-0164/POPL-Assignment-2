@@ -21,7 +21,7 @@ Write the list helpers you need with those forms. Scan for familiar conveniences
 
 ## S1 · Binary Tree Traversals
 
-Work in `8/code/8_q3.rkt` and use `8/tests/S1.md`. Keep the instructor's tree definitions and calls when available. A tree is either `'()` or `(value left right)`, with a number or single-character symbol as the value.
+Work in `8/code/8_q3.rkt` and use `8/tests/S1.rkt`. Keep the submission silent when loaded so the grader can append its own tree definitions and calls. A tree is either `'()` or `(value left right)`, with a number or single-character symbol as the value.
 
 - In `print-inorder`, print one list in left–node–right order. In `print-all-traversals`, print inorder, preorder, and postorder on three lines. Preorder is node–left–right and postorder is left–right–node. Trace a tree with only a right child as well as a balanced tree.
 - In `print-height-and-leaves`, display a two-element list. The empty tree has height 0 and no leaves. A node's height is 1 plus the larger child height. Only a node with two empty children is a leaf. A node with one child has the leaves of that child.
@@ -44,7 +44,7 @@ Work in `8/code/8_q4.rkt` and use `8/tests/S2.md`. Every proper list is a candid
 Use the commands when the template and requested functions are in place. Compare stdout with the handout and the corresponding test notes.
 
 ```powershell
-racket 8/code/8_q3.rkt
+racket 8/tests/S1.rkt
 raco test 8/tests/S2.rkt
 ```
 

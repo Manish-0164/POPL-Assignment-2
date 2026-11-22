@@ -17,7 +17,7 @@ Use SWI-Prolog 9.x and Racket 8.x. The commands apply once the source templates 
 swipl -q -f 8/code/8_q1.pl -g main -t halt
 swipl -q -f 8/code/8_q1.pl -g 'count_solutions([1,2,3,4,5,6,7,8], N), writeln(N)' -t halt
 swipl -q -f 8/code/8_q2.pl -g 'all_equations([2,4,8], Es), writeln(Es)' -t halt
-racket 8/code/8_q3.rkt
+racket 8/tests/S1.rkt
 raco test 8/tests/S2.rkt
 ```
 
