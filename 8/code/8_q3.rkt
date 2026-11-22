@@ -1,7 +1,6 @@
 #lang racket/base
 ;; S1 — Binary Tree Traversals
 ;; Implement print-inorder, print-all-traversals and print-height-and-leaves.
-;; Use the instructor template's trees and calls when available.
 
 ;; Join two lists by consuming the first list one element at a time.
 (define (my-append first second)
@@ -58,3 +57,22 @@
 (define (print-height-and-leaves tree)
   (display (tree-stats tree))
   (newline))
+
+;; Run the handout's example calls in the order presented.
+(define t1 '(4 (2 (1 () ()) (3 () ())) (6 (5 () ()) (7 () ()))))
+(define t2 '(1 () (2 () (3 () ()))))
+(define t3 '(a (b () ()) (c () ())))
+
+(print-inorder t1)
+(print-all-traversals t1)
+(print-height-and-leaves t1)
+
+(print-all-traversals t2)
+(print-height-and-leaves t2)
+
+(print-all-traversals t3)
+(print-height-and-leaves t3)
+
+(print-inorder '())
+(print-all-traversals '())
+(print-height-and-leaves '())

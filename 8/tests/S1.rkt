@@ -15,7 +15,14 @@
   (unless (string=? expected actual)
     (error 's1 "~a: expected ~s, got ~s" label expected actual)))
 
-(check-output 'load "" (lambda () (dynamic-require solution #f)))
+(check-output
+ 'handout-examples
+ (string-append "(1 2 3 4 5 6 7)\n(1 2 3 4 5 6 7)\n"
+                "(4 2 1 3 6 5 7)\n(1 3 2 5 7 6 4)\n(3 4)\n"
+                "(1 2 3)\n(1 2 3)\n(3 2 1)\n(3 1)\n"
+                "(b a c)\n(a b c)\n(b c a)\n(2 2)\n"
+                "()\n()\n()\n()\n(0 0)\n")
+ (lambda () (dynamic-require solution #f)))
 (define solution-namespace (module->namespace solution))
 (define print-inorder (eval 'print-inorder solution-namespace))
 (define print-all-traversals (eval 'print-all-traversals solution-namespace))
