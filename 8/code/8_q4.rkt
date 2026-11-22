@@ -44,3 +44,5 @@
          [n (read)])
     (display (insert-if-short x lst n))
     (newline)))
+
+(print-insert-result)

@@ -5,13 +5,15 @@
 (define-runtime-path solution "../code/8_q4.rkt")
 
 (module+ test
-  ;; Access the grader's definitions without changing the submission module.
+  ;; Supply stdin for the top-level call in the submission module.
   (check-equal?
    (let ([output (open-output-string)])
-     (parameterize ([current-output-port output])
+     (parameterize ([current-input-port
+                     (open-input-string "42 ((1 2) (3 4 5) (6) ()) 3")]
+                    [current-output-port output])
        (dynamic-require solution #f))
      (get-output-string output))
-   "")
+   "((42 1 2) (3 4 5) (42 6) (42))\n")
   (define solution-namespace (module->namespace solution))
   (define my-length (eval 'my-length solution-namespace))
   (define my-map (eval 'my-map solution-namespace))
